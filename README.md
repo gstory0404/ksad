@@ -56,7 +56,7 @@ await KSAd.register(
  await KSAd.getSDKVersion();
 ```
 
-### 3、信息流广告
+### 3、信息流广告（模版）
 ```dart
 KSAdNativeWidget(
     //andorid广告位id
