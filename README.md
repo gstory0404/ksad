@@ -1,7 +1,7 @@
 # 快手广告 Flutter版本
 
 <p>
-<a href="https://pub.flutter-io.cn/packages/flutter_unionad"><img src=https://img.shields.io/badge/ksad-v0.0.1-success></a>
+<a href="https://pub.flutter-io.cn/packages/flutter_unionad"><img src=https://img.shields.io/badge/ksad-v0.0.2-success></a>
 </p>
 
 ## 官方文档
@@ -28,7 +28,7 @@
 ## 集成步骤
 #### 1、pubspec.yaml
 ```Dart
-ksad: ^0.0.1
+ksad: ^0.0.2
 ```
 引入
 ```Dart

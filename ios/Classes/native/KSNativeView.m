@@ -94,7 +94,8 @@
 
 - (void)feedAdsManager:(KSFeedAdsManager *)adsManager didFailWithError:(NSError *_Nullable)error{
     [[KSLogUtil sharedInstance] print:([NSString stringWithFormat:@"信息流广告拉取失败 %@",error])];
-    [_channel invokeMethod:@"onFail" arguments:error.description result:nil];
+    NSDictionary *dictionary = @{@"message":error.description};
+    [_channel invokeMethod:@"onFail" arguments:dictionary result:nil];
 }
 
 
