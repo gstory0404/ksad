@@ -37,7 +37,7 @@ ksad: ^0.0.2
 ksad:
   git:
     url: https://github.com/gstory0404/ksad.git
-    ref: master
+    ref: ad37fb46991b5923e5497dbeb4d8a4f4f7b0484c
 ```
 引入
 ```Dart
