@@ -36,7 +36,7 @@ ksad: ^0.0.2
 //git
 ksad:
   git:
-    url: git@github.com:gstory0404/ksad.git
+    url: https://github.com/gstory0404/ksad.git
     ref: master
 ```
 引入
