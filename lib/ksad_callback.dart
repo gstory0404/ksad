@@ -62,3 +62,31 @@ class KSAdNativeCallBack {
 
   KSAdNativeCallBack({this.onShow, this.onClick, this.onClose, this.onFail});
 }
+
+///开屏广告回调
+class KSAdSplashCallBack {
+  KSOnShow? onShow;
+  KSOnClose? onClose;
+  KSOnFail? onFail;
+  KSOnClick? onClick;
+
+  KSAdSplashCallBack({this.onShow, this.onClick, this.onClose, this.onFail});
+}
+
+///插屏广告回调
+class KSAdInsertCallBack {
+  KSOnShow? onShow;
+  KSOnClose? onClose;
+  KSOnFail? onFail;
+  KSOnClick? onClick;
+  KSOnReady? onReady;
+  KSOnUnReady? onUnReady;
+
+  KSAdInsertCallBack(
+      {this.onShow,
+      this.onClick,
+      this.onClose,
+      this.onFail,
+      this.onReady,
+      this.onUnReady});
+}

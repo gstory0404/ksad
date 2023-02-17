@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:ksad/ksad.dart';
 import 'package:ksad_example/native_page.dart';
+import 'package:ksad_example/splash_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -57,6 +58,28 @@ class _HomePageState extends State<HomePage> {
           print("激励广告奖励  $hasReward   $rewardName   $rewardAmount");
         },
       ),
+      //插屏广告
+      insertCallBack: KSAdInsertCallBack(
+        onShow: () {
+          print("插屏广告显示");
+        },
+        onClick: () {
+          print("插屏广告点击");
+        },
+        onFail: (message) {
+          print("插屏广告失败 $message");
+        },
+        onClose: () {
+          print("插屏广告关闭");
+        },
+        onReady: () async {
+          print("插屏广告预加载准备就绪");
+          await KSAd.showInsertAd();
+        },
+        onUnReady: () {
+          print("插屏广告预加载未准备就绪");
+        },
+      ),
     );
   }
 
@@ -64,9 +87,9 @@ class _HomePageState extends State<HomePage> {
   Future<void> _register() async {
     _isRegister = await KSAd.register(
       //androidId
-      androidId: "1070600001",
+      androidId: "1051100001",
       //iosId
-      iosId: "1070600001",
+      iosId: "1051100002",
       //是否显示日志log
       debug: true,
       //是否显示个性化推荐广告
@@ -95,9 +118,9 @@ class _HomePageState extends State<HomePage> {
               onPressed: () async {
                 await KSAd.loadRewardAd(
                   //android广告id
-                  androidId: "10706000001",
+                  androidId: "10511000004",
                   //ios广告id
-                  iosId: "10706000001",
+                  iosId: "10511000001",
                   //用户id
                   userID: "123",
                   //奖励
@@ -113,11 +136,36 @@ class _HomePageState extends State<HomePage> {
             MaterialButton(
               color: Colors.blue,
               textColor: Colors.white,
-              child: const Text('信息流广澳'),
+              child: const Text('信息流广告'),
               onPressed: () async {
                 Navigator.push(context, MaterialPageRoute(builder: (_) {
                   return const NativePage();
                 }));
+              },
+            ),
+            //开屏广告
+            MaterialButton(
+              color: Colors.blue,
+              textColor: Colors.white,
+              child: const Text('开屏广告'),
+              onPressed: () async {
+                Navigator.push(context, MaterialPageRoute(builder: (_) {
+                  return const SplashPage();
+                }));
+              },
+            ),
+            //插屏广告
+            MaterialButton(
+              color: Colors.blue,
+              textColor: Colors.white,
+              child: const Text('插屏广告'),
+              onPressed: () async {
+                await KSAd.loadInsertAd(
+                  //android广告id
+                  androidId: "10511000012",
+                  //ios广告id
+                  iosId: "10511000011",
+                );
               },
             ),
           ],

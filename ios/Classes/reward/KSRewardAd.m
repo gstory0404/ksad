@@ -2,7 +2,7 @@
 //  KSRewardAd.m
 //  ksad
 //
-//  Created by 郭维佳 on 2022/8/23.
+//  Created by gstory on 2022/8/23.
 //
 
 #import "KSRewardAd.h"
@@ -74,9 +74,8 @@
  */
 - (void)rewardedVideoAd:(KSRewardedVideoAd *)rewardedVideoAd didFailWithError:(NSError *_Nullable)error{
     [[KSLogUtil sharedInstance] print:([NSString stringWithFormat:@"激励广告素材加载失败 %@",error.description])];
-    NSInteger code = error.code;
     NSString *message = error.description;
-    NSDictionary *dictionary = @{@"adType":@"rewardAd",@"onAdMethod":@"onFail",@"code":@(code),@"message":message};
+    NSDictionary *dictionary = @{@"adType":@"rewardAd",@"onAdMethod":@"onFail",@"message":message};
     [[KSEvent sharedInstance] sentEvent:dictionary];
 }
 /**
@@ -128,6 +127,7 @@
  */
 - (void)rewardedVideoAdDidPlayFinish:(KSRewardedVideoAd *)rewardedVideoAd didFailWithError:(NSError *_Nullable)error{
     [[KSLogUtil sharedInstance] print:(@"激励广告播放完成或发生错误")];
+    NSDictionary *dictionary = @{@"adType":@"rewardAd",@"onAdMethod":@"onFail",@"message":error.description};
 }
 /**
  当用户单击跳过按钮时调用此方法。

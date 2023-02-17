@@ -2,7 +2,7 @@
 //  KSEvent.m
 //  ksad
 //
-//  Created by 郭维佳 on 2022/8/23.
+//  Created by gstory on 2022/8/23.
 //
 
 #import "KSEvent.h"

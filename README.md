@@ -1,7 +1,11 @@
-# 快手广告 Flutter版本
+# 快手广告Flutter版本
 
 <p>
-<a href="https://pub.flutter-io.cn/packages/flutter_unionad"><img src=https://img.shields.io/badge/ksad-v0.0.2-success></a>
+<a href="https://pub.flutter-io.cn/packages/ksad"><img src=https://img.shields.io/pub/v/ksad?color=orange></a>
+<a href="https://pub.flutter-io.cn/packages/ksad"><img src=https://img.shields.io/pub/likes/ksad></a>
+<a href="https://pub.flutter-io.cn/packages/ksad"><img src=https://img.shields.io/pub/points/ksad></a>
+<a href="https://github.com/gstory0404/ksad/commits"><img src=https://img.shields.io/github/last-commit/gstory0404/ksad></a>
+<a href="https://github.com/gstory0404/ksad"><img src=https://img.shields.io/github/stars/gstory0404/ksad></a>
 </p>
 
 ## 官方文档
@@ -29,6 +33,11 @@
 #### 1、pubspec.yaml
 ```Dart
 ksad: ^0.0.2
+//git
+ksad:
+  git:
+    url: git@github.com:gstory0404/ksad.git
+    ref: master
 ```
 引入
 ```Dart
@@ -85,7 +94,31 @@ KSAdNativeWidget(
 )
 ```
 
-### 4、激励广告
+### 4、开屏广告
+```dart
+KSAdSplashWidget(
+    androidId: "10511000010",
+    iosId: "10511000009",
+    callBack: KSAdSplashCallBack(
+        onShow: (){
+          print("开屏广告显示");
+        },
+        onClick: (){
+          print("开屏广告点击");
+        },
+        onClose: (){
+          print("开屏广告关闭");
+          Navigator.of(context).pop();
+        },
+        onFail: (msg){
+          print("开屏广告错误  $msg");
+          Navigator.of(context).pop();
+        }
+     ),
+)
+```
+
+### 5、激励广告
 预加载广告
 ```dart
 await KSAd.loadRewardAd(
@@ -138,4 +171,48 @@ KSAdStream.initAdStream(
         },
       ),
     );
+```
+
+### 6、插屏广告
+预加载广告
+```dart
+await KSAd.loadInsertAd(
+                  //android广告id
+                  androidId: "10706000001",
+                  //ios广告id
+                  iosId: "10706000001",
+                );
+```
+显示广告
+
+```dart
+await KSAd.showInsertAd();
+```
+
+广告监听
+```dart
+KSAdStream.initAdStream(
+    //插屏广告
+    insertCallBack: KSAdInsertCallBack(
+        onShow: () {
+          print("插屏广告显示");
+        },
+        onClick: () {
+          print("插屏广告点击");
+        },
+        onFail: (message) {
+          print("插屏广告失败 $message");
+        },
+        onClose: () {
+          print("插屏广告关闭");
+        },
+        onReady: () async {
+          print("插屏广告预加载准备就绪");
+          await KSAd.showInsertAd();
+        },
+        onUnReady: () {
+          print("插屏广告预加载未准备就绪");
+        },
+    )
+)
 ```

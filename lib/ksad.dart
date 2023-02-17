@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,8 @@ import 'package:flutter/services.dart';
 part 'ksad_callback.dart';
 part 'ksad_stream.dart';
 part 'ksad_code.dart';
-part 'ksad_native_widget.dart';
+part 'widget/ksad_native_widget.dart';
+part 'widget/ksad_splash_widget.dart';
 
 class KSAd {
   static const MethodChannel _channel = MethodChannel('ksad');
@@ -84,4 +86,27 @@ class KSAd {
     return await _channel.invokeMethod("showRewardAd", {});
   }
 
+  ///
+  /// # 插屏广告预加载
+  ///
+  /// [androidId] android广告ID
+  ///
+  /// [iosId] ios广告ID
+  ///
+  static Future<bool> loadInsertAd({
+    required String androidId,
+    required String iosId,
+  }) async {
+    return await _channel.invokeMethod("loadInsertAd", {
+      "androidId": androidId,
+      "iosId": iosId,
+    });
+  }
+
+  ///
+  /// # 显示激励广告
+  ///
+  static Future<bool> showInsertAd() async {
+    return await _channel.invokeMethod("showInsertAd", {});
+  }
 }

@@ -25,9 +25,9 @@ class _NativePageState extends State<NativePage> {
           children: [
             KSAdNativeWidget(
               //andorid广告位id
-              androidId: "10706000004",
+              androidId: "10511000008",
               //ios广告位id
-              iosId: "10706000004",
+              iosId: "10511000007",
               //广告宽
               viewWidth: 300,
               //广告高 加载成功后会自动修改为sdk返回广告高

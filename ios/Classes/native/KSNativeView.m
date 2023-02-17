@@ -87,8 +87,8 @@
     }
     self.native = feedAdDataArray[0];
     self.native.delegate = self;
+//    self.native.rootViewController = [UIViewController jsd_getCurrentViewController];
     [self.container addSubview:self.native.feedView];
-    //    self.native.rootViewController = [UIViewController jsd_getCurrentViewController];
 }
 
 
@@ -109,7 +109,7 @@
     [_channel invokeMethod:@"onClick" arguments:nil result:nil];
 }
 - (void)feedAdDislike:(KSFeedAd *)feedAd{
-    [[KSLogUtil sharedInstance] print:(@"信息流广告点击")];
+    [[KSLogUtil sharedInstance] print:(@"信息流广告关闭")];
     [_channel invokeMethod:@"onClose" arguments:nil result:nil];
 }
 

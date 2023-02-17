@@ -13,7 +13,7 @@ class KSAdType {
   static const String rewardAd = "rewardAd";
 
   ///插屏广告
-  static const String interactAd = "interactAd";
+  static const String insertAd = "insertAd";
 }
 
 class KSAdMethod {

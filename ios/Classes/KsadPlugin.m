@@ -4,6 +4,8 @@
 #import "KSLogUtil.h"
 #import "KSEvent.h"
 #import "KSNativeView.h"
+#import "KSSplashView.h"
+#import "KSInsertAd.h"
 
 @implementation KsadPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
@@ -16,6 +18,8 @@
     [[KSEvent sharedInstance]  initEvent:registrar];
     //注册native
     [registrar registerViewFactory:[[KSNativeFactory alloc] initWithMessenger:registrar.messenger] withId:@"com.gstory.ksad/NativeView"];
+    //注册splash
+    [registrar registerViewFactory:[[KSSplashViewFactory alloc] initWithMessenger:registrar.messenger] withId:@"com.gstory.ksad/SplashView"];
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
@@ -47,6 +51,14 @@
         //显示激励广告
     }else if([@"showRewardAd" isEqualToString:call.method]){
         [[KSRewardAd sharedInstance] showAd];
+        result(@YES);
+        //预加载插屏广告
+    }else if([@"loadInsertAd" isEqualToString:call.method]){
+        [[KSInsertAd sharedInstance] loadAd:call.arguments];
+        result(@YES);
+        //显示插屏广告
+    }else if([@"showInsertAd" isEqualToString:call.method]){
+        [[KSInsertAd sharedInstance] showAd];
         result(@YES);
     } else {
         result(FlutterMethodNotImplemented);

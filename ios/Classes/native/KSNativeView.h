@@ -2,7 +2,7 @@
 //  KSNativeView.h
 //  ksad
 //
-//  Created by 郭维佳 on 2022/8/24.
+//  Created by gstory on 2022/8/24.
 //
 
 #import <Foundation/Foundation.h>
