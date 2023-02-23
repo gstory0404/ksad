@@ -6,9 +6,6 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        flatDir {
-            dirs project(':ksad').file('libs')
-        }
     }
 
     dependencies {
@@ -21,6 +18,9 @@ rootProject.allprojects {
     repositories {
         google()
         mavenCentral()
+        flatDir {
+            dirs project(':ksad').file('libs')
+        }
     }
 }
 
