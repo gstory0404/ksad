@@ -26,7 +26,6 @@ class KsadPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
         mActivity = binding.activity
-        Log.d("======>","${mFlutterPluginBinding == null}   ${mActivity == null}")
         //注册view
         KsadViewPlugin.registerWith(mFlutterPluginBinding!!, mActivity!!)
     }
@@ -71,7 +70,8 @@ class KsadPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             val codeId = call.argument<String>("androidId")
             val rewardName = call.argument<String>("rewardName")
             val rewardAmount = call.argument<Int>("rewardAmount")
-            KsadRewardAd.loadAd(mActivity!!,codeId,rewardAmount,rewardName)
+            val extraData = call.argument<String>("customData")
+            KsadRewardAd.loadAd(mActivity!!,codeId,rewardAmount,rewardName,extraData)
             result.success(true)
             //展示激励广告
         } else if (call.method == "showRewardAd") {

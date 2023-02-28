@@ -86,15 +86,16 @@
  */
 - (void)ksad_splashAdDidLoad:(KSSplashAdView *)splashAdView{
     [[KSLogUtil sharedInstance] print:(@"开屏广告展示")];
-    self.splashAdView.frame= self.container.frame;
-    [self.splashAdView showInView:self.container];
+    
     [_channel invokeMethod:@"onShow" arguments:nil result:nil];
 }
 /**
  * splash ad material load, ready to display
  */
 - (void)ksad_splashAdContentDidLoad:(KSSplashAdView *)splashAdView{
-    [[KSLogUtil sharedInstance] print:(@"开屏广告无聊加载成功")];
+    [[KSLogUtil sharedInstance] print:(@"开屏广告物料加载成功")];
+    self.splashAdView.frame= self.container.frame;
+    [self.splashAdView showInView:self.container];
 }
 /**
  * splash ad (material) failed to load

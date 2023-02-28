@@ -33,14 +33,14 @@ class _KSAdNativeWidgetState extends State<KSAdNativeWidget> {
   //广告是否显示
   bool _isShowAd = true;
 
-  double _width = 0;
-  double _height = 0;
+  int _width = 0;
+  int _height = 0;
 
   @override
   void initState() {
     super.initState();
-    _width = widget.viewWidth.toDouble();
-    _height = widget.viewHeight.toDouble();
+    _width = widget.viewWidth;
+    _height = widget.viewHeight;
     setState(() {});
   }
 
@@ -51,8 +51,8 @@ class _KSAdNativeWidgetState extends State<KSAdNativeWidget> {
     }
     if (defaultTargetPlatform == TargetPlatform.android) {
       return Container(
-        width: _width,
-        height: _height,
+        width: _width.toDouble(),
+        height: _height.toDouble(),
         child: AndroidView(
           viewType: _viewType,
           creationParams: {
@@ -66,8 +66,8 @@ class _KSAdNativeWidgetState extends State<KSAdNativeWidget> {
       );
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
       return Container(
-        width: _width,
-        height: _height,
+        width: _width.toDouble(),
+        height: _height.toDouble(),
         child: UiKitView(
           viewType: _viewType,
           creationParams: {
@@ -92,6 +92,7 @@ class _KSAdNativeWidgetState extends State<KSAdNativeWidget> {
 
   //监听原生view传值
   Future<dynamic> _platformCallHandler(MethodCall call) async {
+    print("${call.method} ==> ${call.arguments}");
     switch (call.method) {
       //显示广告
       case KSAdMethod.onShow:

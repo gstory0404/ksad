@@ -87,9 +87,9 @@ class _HomePageState extends State<HomePage> {
   Future<void> _register() async {
     _isRegister = await KSAd.register(
       //androidId
-      androidId: "1051100001",
+      androidId: "613400004",
       //iosId
-      iosId: "1051100002",
+      iosId: "613400004",
       //是否显示日志log
       debug: true,
       //是否显示个性化推荐广告
@@ -118,16 +118,16 @@ class _HomePageState extends State<HomePage> {
               onPressed: () async {
                 await KSAd.loadRewardAd(
                   //android广告id
-                  androidId: "10511000004",
+                  androidId: "6134000007",
                   //ios广告id
-                  iosId: "10511000001",
+                  iosId: "6134000007",
                   //用户id
                   userID: "123",
                   //奖励
                   rewardName: "100金币",
                   //奖励数
                   rewardAmount: 100,
-                  //扩展参数 服务器回调使用
+                  //json扩展参数 服务器回调使用
                   customData: "",
                 );
               },
@@ -162,9 +162,9 @@ class _HomePageState extends State<HomePage> {
               onPressed: () async {
                 await KSAd.loadInsertAd(
                   //android广告id
-                  androidId: "10511000012",
+                  androidId: "6134000013",
                   //ios广告id
-                  iosId: "10511000011",
+                  iosId: "6134000013",
                 );
               },
             ),

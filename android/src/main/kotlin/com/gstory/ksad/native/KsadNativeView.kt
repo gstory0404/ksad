@@ -6,10 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import com.gstory.ksad.KsadConfig
-import com.kwad.sdk.api.KsAdSDK
-import com.kwad.sdk.api.KsFeedAd
-import com.kwad.sdk.api.KsLoadManager
-import com.kwad.sdk.api.KsScene
+import com.kwad.sdk.api.*
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
@@ -63,11 +60,13 @@ internal class KsadNativeView(
             }
 
             override fun onFeedAdLoad(p0: MutableList<KsFeedAd>?) {
-                Log.d(TAG, "信息流广告加载成功")
+                Log.d(TAG, "信息流广告物料加载成功 ${p0?.size}  ecpm=${p0!![0].ecpm}")
                 if (p0 == null || p0.size == 0) {
                     return
                 }
                 nativeAd = p0[0]
+                nativeAd?.setVideoPlayConfig(KsAdVideoPlayConfig.Builder().videoAutoPlayType(0).build())
+                nativeAd?.setVideoSoundEnable(false)
                 nativeAd?.setAdInteractionListener(object : KsFeedAd.AdInteractionListener {
                     override fun onAdClicked() {
                         Log.d(TAG, "信息流广告点击")
@@ -75,8 +74,10 @@ internal class KsadNativeView(
                     }
 
                     override fun onAdShow() {
-                        Log.d(TAG, "信息流广告显示")
-                        channel?.invokeMethod("onShow", mutableMapOf("width" to nativeAd?.getFeedView(activity)?.width, "height" to nativeAd?.getFeedView(activity)?.height))
+                        Log.d(TAG, "信息流广告显示 ${nativeAd?.getFeedView(activity)?.width}   ${nativeAd?.getFeedView(activity)?.height}")
+                        channel?.invokeMethod("onShow", mutableMapOf("width" to nativeAd?.getFeedView(activity)?.measuredWidth, "height" to nativeAd?.getFeedView(activity)?.measuredHeight))
+                        mContainer?.removeAllViews()
+                        mContainer?.addView(nativeAd!!.getFeedView(activity))
                     }
 
                     override fun onDislikeClicked() {
@@ -93,8 +94,8 @@ internal class KsadNativeView(
                     }
 
                 })
+                mContainer?.addView(nativeAd!!.getFeedView(activity))
             }
-
         })
     }
 

@@ -15,6 +15,7 @@
     <application
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="true"
         android:label="ksad_example">
         <activity
             android:name=".MainActivity"

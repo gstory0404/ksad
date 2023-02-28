@@ -5,6 +5,8 @@ import android.util.Log
 import com.gstory.ksad.KsadEvent
 import com.kwad.sdk.api.*
 import com.kwad.sdk.api.KsLoadManager.RewardVideoAdListener
+import org.json.JSONException
+import org.json.JSONObject
 
 object KsadRewardAd {
     private var TAG = this.javaClass.javaClass.name
@@ -15,15 +17,17 @@ object KsadRewardAd {
     private var mCodeId: String? = null
     private var rewardAmount: Int? = 0
     private var rewardName: String? = null
+    private var extraData: String? = null
 
     private var rewardVideoAd: KsRewardVideoAd? = null
 
-    fun loadAd(mActivity: Activity, mCodeId: String?, rewardAmount: Int?, rewardName: String?) {
+    fun loadAd(mActivity: Activity, mCodeId: String?, rewardAmount: Int?, rewardName: String?,extraData : String?) {
         this.mActivity = mActivity
         this.mCodeId = mCodeId
         this.rewardAmount = rewardAmount
         this.rewardName = rewardName
-        var scene = KsScene.Builder(this.mCodeId!!.toLong()).build()
+        this.extraData = extraData
+        var scene = KsScene.Builder(this.mCodeId!!.toLong()).rewardCallbackExtraData(jsonToMap(extraData)).build()
         KsAdSDK.getLoadManager()?.loadRewardVideoAd(scene, object : RewardVideoAdListener {
             override fun onError(p0: Int, p1: String?) {
                 Log.d(TAG, "激励广告加载失败 $p0 $p1")
@@ -44,6 +48,26 @@ object KsadRewardAd {
 
         })
     }
+
+    fun jsonToMap(jsonString: String?): Map<String, String>? {
+        val jsonObject: JSONObject
+        try {
+            jsonObject = JSONObject(jsonString)
+            val keyIter: Iterator<String> = jsonObject.keys()
+            var key: String
+            var value: Any
+            var valueMap = mutableMapOf<String, String>()
+            while (keyIter.hasNext()) {
+                key = keyIter.next()
+                value = jsonObject[key].toString()
+                valueMap[key] = value
+            }
+            return valueMap
+        } catch (e: JSONException) {
+            return mutableMapOf()
+        }
+    }
+
 
     fun showAd() {
         if (rewardVideoAd == null || rewardVideoAd?.isAdEnable == false) {
@@ -93,7 +117,7 @@ object KsadRewardAd {
             }
 
         })
-        var config = KsVideoPlayConfig.Builder().showLandscape(true).build()
+        var config = KsVideoPlayConfig.Builder().showLandscape(false).build()
         rewardVideoAd?.showRewardVideoAd(mActivity, config)
     }
 }

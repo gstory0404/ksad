@@ -17,8 +17,8 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return KSAdSplashWidget(
-      androidId: "10511000010",
-      iosId: "10511000009",
+      androidId: "6134000010",
+      iosId: "6134000010",
       callBack: KSAdSplashCallBack(
         onShow: (){
           print("开屏广告显示");

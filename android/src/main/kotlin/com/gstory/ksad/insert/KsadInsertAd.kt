@@ -25,6 +25,7 @@ object KsadInsertAd {
 
     fun loadAd(mActivity: Activity, mCodeId: String?) {
         this.mCodeId = mCodeId
+        this.mActivity = mActivity
         var scene = KsScene.Builder(mCodeId!!.toLong()).build()
         KsAdSDK.getLoadManager()?.loadInterstitialAd(scene,object : KsLoadManager.InterstitialAdListener {
             override fun onError(p0: Int, p1: String?) {
@@ -33,7 +34,7 @@ object KsadInsertAd {
             }
 
             override fun onRequestResult(p0: Int) {
-                Log.d(TAG, "插屏广告加载成功 $p0")
+                Log.d(TAG, "插屏广告加载结果 $p0")
             }
 
             override fun onInterstitialAdLoad(p0: MutableList<KsInterstitialAd>?) {
@@ -49,6 +50,7 @@ object KsadInsertAd {
 
     fun showAd(){
         if(interstitialAd == null){
+            Log.d(TAG, "插屏广告interstitialAd不存在")
             return
         }
         var config = KsVideoPlayConfig.Builder().build()
