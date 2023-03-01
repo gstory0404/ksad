@@ -75,7 +75,7 @@ object KsadRewardAd {
             KsadEvent.sendContent(mutableMapOf("adType" to "rewardAd", "onAdMethod" to "onUnReady"))
             return
         }
-        rewardVideoAd?.setRewardPlayAgainInteractionListener(object : KsRewardVideoAd.RewardAdInteractionListener {
+        rewardVideoAd?.setRewardAdInteractionListener(object : KsRewardVideoAd.RewardAdInteractionListener {
             override fun onAdClicked() {
                 Log.d(TAG, "激励视频广告点击")
                 KsadEvent.sendContent(mutableMapOf("adType" to "rewardAd", "onAdMethod" to "onClick"))

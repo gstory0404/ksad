@@ -55,8 +55,6 @@ internal class KsadSplashView(
     private fun loadSplashAd() {
         mContainer?.removeAllViews()
         var scene = KsScene.Builder(this.mCodeId!!.toLong())
-                //是否需要开屏小窗展示，默认为false, 设置false后将不会回调 onShowMiniWindow
-                .needShowMiniWindow(false)
                 .build()
         KsAdSDK.getLoadManager()?.loadSplashScreenAd(scene,object : KsLoadManager.SplashScreenAdListener {
             override fun onError(p0: Int, p1: String?) {
