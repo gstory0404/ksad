@@ -32,12 +32,7 @@
 ## 集成步骤
 #### 1、pubspec.yaml
 ```Dart
-ksad: ^0.0.2
-//git
-ksad:
-  git:
-    url: https://github.com/gstory0404/ksad.git
-    ref: ad37fb46991b5923e5497dbeb4d8a4f4f7b0484c
+ksad: ^latest
 ```
 引入
 ```Dart
