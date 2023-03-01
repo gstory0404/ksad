@@ -127,7 +127,7 @@ await KSAd.loadRewardAd(
                   rewardName: "100金币",
                   //奖励数
                   rewardAmount: 100,
-                  //扩展参数 服务器回调使用
+                  //json扩展参数 服务器回调使用
                   customData: "",
                 );
 ```
