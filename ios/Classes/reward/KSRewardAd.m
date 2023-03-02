@@ -111,6 +111,8 @@
  */
 - (void)rewardedVideoAdDidClose:(KSRewardedVideoAd *)rewardedVideoAd{
     [[KSLogUtil sharedInstance] print:(@"激励广告关闭")];
+    NSDictionary *dictionary = @{@"adType":@"rewardAd",@"onAdMethod":@"onClose"};
+    [[KSEvent sharedInstance] sentEvent:dictionary];
 }
 
 /**
@@ -153,8 +155,6 @@
  */
 - (void)rewardedVideoAd:(KSRewardedVideoAd *)rewardedVideoAd hasReward:(BOOL)hasReward{
     [[KSLogUtil sharedInstance] print:(@"激励广告关闭")];
-    NSDictionary *dictionary = @{@"adType":@"rewardAd",@"onAdMethod":@"onClose"};
-    [[KSEvent sharedInstance] sentEvent:dictionary];
 }
 /**
  该方法在用户关闭视频广告时调用，支持分阶段奖励。
