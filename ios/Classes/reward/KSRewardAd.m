@@ -129,7 +129,9 @@
  */
 - (void)rewardedVideoAdDidPlayFinish:(KSRewardedVideoAd *)rewardedVideoAd didFailWithError:(NSError *_Nullable)error{
     [[KSLogUtil sharedInstance] print:(@"激励广告播放完成或发生错误")];
-    NSDictionary *dictionary = @{@"adType":@"rewardAd",@"onAdMethod":@"onFail",@"message":error.description};
+    if(error != nil){
+        NSDictionary *dictionary = @{@"adType":@"rewardAd",@"onAdMethod":@"onFail",@"message":error.description};
+    }
 }
 /**
  当用户单击跳过按钮时调用此方法。
