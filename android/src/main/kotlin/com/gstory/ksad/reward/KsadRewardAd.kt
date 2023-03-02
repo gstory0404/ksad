@@ -101,6 +101,7 @@ object KsadRewardAd {
 
             override fun onVideoPlayStart() {
                 Log.d(TAG, "激励视频广告开始播放视频")
+                KsadEvent.sendContent(mutableMapOf("adType" to "rewardAd", "onAdMethod" to "onShow"))
             }
 
             override fun onRewardVerify() {
