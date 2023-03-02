@@ -36,6 +36,9 @@ class KSAdMethod {
   ///广告关闭
   static const String onClose = "onClose";
 
+  ///广告跳过
+  static const String onSkip = "onSkip";
+
   ///广告奖励校验
   static const String onVerify = "onVerify";
 

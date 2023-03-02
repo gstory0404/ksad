@@ -77,6 +77,10 @@ class _KSAdSplashWidgetState extends State<KSAdSplashWidget> {
       case KSAdMethod.onClick:
         widget.callBack?.onClick!();
         break;
+    //跳过
+      case KSAdMethod.onSkip:
+        widget.callBack?.onSkip!();
+        break;
       //关闭
       case KSAdMethod.onClose:
         widget.callBack?.onClose!();

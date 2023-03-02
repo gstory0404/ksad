@@ -69,8 +69,9 @@ class KSAdSplashCallBack {
   KSOnClose? onClose;
   KSOnFail? onFail;
   KSOnClick? onClick;
+  KSOnSkip? onSkip;
 
-  KSAdSplashCallBack({this.onShow, this.onClick, this.onClose, this.onFail});
+  KSAdSplashCallBack({this.onShow, this.onClick, this.onClose, this.onFail,this.onSkip});
 }
 
 ///插屏广告回调

@@ -91,6 +91,7 @@ internal class KsadSplashView(
 
                     override fun onSkippedAd() {
                         Log.d(TAG, "开屏广告跳过")
+                        channel?.invokeMethod("onSkip", null)
                     }
 
                     override fun onDownloadTipsDialogShow() {

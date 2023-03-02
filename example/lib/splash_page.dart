@@ -19,22 +19,20 @@ class _SplashPageState extends State<SplashPage> {
     return KSAdSplashWidget(
       androidId: "6134000010",
       iosId: "6134000010",
-      callBack: KSAdSplashCallBack(
-        onShow: (){
-          print("开屏广告显示");
-        },
-        onClick: (){
-          print("开屏广告点击");
-        },
-        onClose: (){
-          print("开屏广告关闭");
-          Navigator.of(context).pop();
-        },
-        onFail: (msg){
-          print("开屏广告错误  $msg");
-          Navigator.of(context).pop();
-        }
-      ),
+      callBack: KSAdSplashCallBack(onShow: () {
+        print("开屏广告显示");
+      }, onClick: () {
+        print("开屏广告点击");
+      }, onClose: () {
+        print("开屏广告关闭");
+        Navigator.of(context).pop();
+      }, onSkip: () {
+        print("开屏广告跳过");
+        Navigator.of(context).pop();
+      }, onFail: (msg) {
+        print("开屏广告错误  $msg");
+        Navigator.of(context).pop();
+      }),
     );
   }
 }

@@ -147,7 +147,7 @@
  */
 - (void)ksad_splashAd:(KSSplashAdView *)splashAdView didSkip:(NSTimeInterval)showDuration{
     [[KSLogUtil sharedInstance] print:(@"开屏广告跳过")];
-    [_channel invokeMethod:@"onClose" arguments:nil result:nil];
+    [_channel invokeMethod:@"onSkip" arguments:nil result:nil];
 }
 /**
  * splash ad did enter conversion view controller
