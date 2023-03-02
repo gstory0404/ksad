@@ -101,6 +101,10 @@ KSAdSplashWidget(
         onClick: (){
           print("开屏广告点击");
         },
+        onSkip: () {
+          print("开屏广告跳过");
+          Navigator.of(context).pop();
+        },
         onClose: (){
           print("开屏广告关闭");
           Navigator.of(context).pop();
