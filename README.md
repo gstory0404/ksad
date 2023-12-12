@@ -13,8 +13,8 @@
 </p>
 
 ## 官方文档
-* [Android]()
-* [IOS](https://static.yximgs.com/udata/pkg/KSAdSDKTarGz/doc/ksadsdk-iOS-readme-ad-3.3.28--1182.pdf)
+* [Android](https://github.com/gstory0404/ksad/blob/master/doc/%E5%BF%AB%E6%89%8B%E5%B9%BF%E5%91%8Asdk%E6%8E%A5%E5%85%A5%E6%96%87%E6%A1%A3.pdf)
+* [IOS](https://github.com/gstory0404/ksad/blob/master/doc/%E5%BF%AB%E6%89%8B%E5%B9%BF%E5%91%8AiOS-SDK%E6%8E%A5%E5%85%A5%E6%96%87%E6%A1%A3-ad.pdf)
 
 ## 版本更新
 
