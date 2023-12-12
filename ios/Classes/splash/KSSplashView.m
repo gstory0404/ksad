@@ -71,8 +71,6 @@
     self.splashAdView.delegate=self;
     //开屏广告建议设置rootViewController，未设置取keyWindow的VC
     self.splashAdView.rootViewController=[UIViewController jsd_getCurrentViewController];
-    //视频播放5s后进入小窗
-    self.splashAdView.needShowMiniWindow=YES;
     //是否屏蔽摇一摇，false或者不赋值，不屏蔽，true屏蔽
     KSAdSplashAdExtraDataModel*extraModel= [[KSAdSplashAdExtraDataModel alloc]init];
     extraModel.disableShake=YES;

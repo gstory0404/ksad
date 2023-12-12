@@ -21,7 +21,7 @@ A new Flutter plugin project.
  # s.dependency 'KSAdSDK', '3.3.38.1'
   s.frameworks = ["StoreKit","AdSupport","CoreLocation","SystemConfiguration","CoreTelephony","Security","AVFoundation","WebKit","AudioToolbox","CoreGraphics","CoreImage","CoreText","JavaScriptCore","MapKit","UIKit","MobileCoreServices","MediaPlayer","CoreMedia","CoreMotion","Accelerate","ImageIO","QuartzCore","Foundation","CoreData","AVKit","MessageUI","QuickLook","AddressBook","AppTrackingTransparency","CFNetwork","SafariServices","DeviceCheck"]
   s.libraries = ["z","xml2","c++abi","resolv.9","c++","sqlite3","bz2","iconv", "resolv.9","bz2.1.0"]
-  s.vendored_frameworks = 'SDK/KSAdSDK.framework'
+  s.vendored_frameworks = 'SDK/KSAdSDK.xcframework'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }

@@ -1,16 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gstory.ksad_example">
     <!--检测当前网络状态是2G、3G、4G还是WiFi-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /><!--联网权限-->
-    <uses-permission android:name="android.permission.INTERNET" /><!--获取设备标识IMEI。用于标识用户-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" /><!--读写存储权限-->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /><!--获取MAC地址，用于标识用户-->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /><!--安装应用权限-->
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" /><!--定位权限，不强制要求-->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /><!--建议添加“query_all_package”权限，SDK将通过此权限在AndroidR系统上判定广告对应的应用是否在用户的app上安装，避免投放错误的广告，以此提高用户的广告体验。若添加此权限，需要在您的用户隐私文档中声明-->
-    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!--联网权限-->
+    <uses-permission android:name="android.permission.INTERNET" /> <!--获取设备标识IMEI。用于标识用户-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!--读写存储权限-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!--获取MAC地址，用于标识用户-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!--安装应用权限-->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" /> <!--定位权限，不强制要求-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!--建议添加“query_all_package”权限，SDK将通过此权限在AndroidR系统上判定广告对应的应用 是否在用户的app上安装，避免投放错误的广告，以此提高用户的广告体验。若添加此权限，需要在您的用 户隐私文档中声明-->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/> <!--通知栏权限，用于展示下载通知，非必须-->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:name="${applicationName}"
