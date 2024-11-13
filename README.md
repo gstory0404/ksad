@@ -13,8 +13,8 @@
 </p>
 
 ## 官方文档
-* [Android](https://github.com/gstory0404/ksad/blob/master/doc/%E5%BF%AB%E6%89%8B%E5%B9%BF%E5%91%8Asdk%E6%8E%A5%E5%85%A5%E6%96%87%E6%A1%A3.pdf)
-* [IOS](https://github.com/gstory0404/ksad/blob/master/doc/%E5%BF%AB%E6%89%8B%E5%B9%BF%E5%91%8AiOS-SDK%E6%8E%A5%E5%85%A5%E6%96%87%E6%A1%A3-ad.pdf)
+* [Android](https://u.kuaishou.com/access/sdk-docs?client=IOS&docType=readme)
+* [IOS](https://u.kuaishou.com/access/sdk-docs?client=IOS&docType=readme)
 
 ## 版本更新
 
@@ -22,15 +22,14 @@
 
 ## 本地开发环境
 ```
-[✓] Flutter (Channel stable, 3.16.0, on macOS 14.1.2 23B92 darwin-x64, locale
-    zh-Hans-CN)
+[✓] Flutter (Channel stable, 3.24.3, on macOS 14.6.1 23G93 darwin-x64, locale zh-Hans-CN)
 [✓] Android toolchain - develop for Android devices (Android SDK version 33.0.1)
-[✓] Xcode - develop for iOS and macOS (Xcode 15.0.1)
+[✓] Xcode - develop for iOS and macOS (Xcode 16.1)
 [✓] Chrome - develop for the web
 [✓] Android Studio (version 2022.1)
 [✓] Android Studio (version 2023.1)
-[✓] IntelliJ IDEA Ultimate Edition (version 2023.3)
-[✓] VS Code (version 1.85.0)
+[✓] IntelliJ IDEA Ultimate Edition (version 2024.2.4)
+[✓] VS Code (version 1.95.2)
 [✓] Connected device (4 available)
 [✓] Network resources
 ```
@@ -65,7 +64,9 @@ await KSAd.register(
       //是否显示日志log
       debug: true,
       //是否显示个性化推荐广告
-      personalized: true,
+      personal: true,
+      //是否开启程序化广告
+      programmatic: true,
     )
 ```
 
