@@ -7,6 +7,7 @@ import androidx.annotation.NonNull
 import com.gstory.ksad.insert.KsadInsertAd
 import com.gstory.ksad.reward.KsadRewardAd
 import com.kwad.sdk.api.KsAdSDK
+import com.kwad.sdk.api.KsInitCallback
 import com.kwad.sdk.api.SdkConfig
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -56,12 +57,26 @@ class KsadPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         if (call.method == "register") {
             val appId = call.argument<String>("androidId")
             val debug = call.argument<Boolean>("debug")
+            val personal = call.argument<Boolean>("personal")
+            val programmatic = call.argument<Boolean>("programmatic")
             KsAdSDK.init(mActivity, SdkConfig.Builder().apply {
                 appId(appId)
                 showNotification(true)
                 debug(debug!!)
+                setStartCallback(object : KsInitCallback{
+                    override fun onSuccess() {
+                        result.success(true)
+                    }
+
+                    override fun onFail(p0: Int, p1: String?) {
+                        result.success(false)
+                    }
+
+                })
             }.build())
-            result.success(true)
+            KsAdSDK.setPersonalRecommend(personal!!)
+            KsAdSDK.setPersonalRecommend(programmatic!!)
+            KsAdSDK.start()
             //获取sdk版本
         } else if (call.method == "getSDKVersion") {
             result.success(KsAdSDK.getSDKVersion())

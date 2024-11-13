@@ -28,18 +28,29 @@
         NSString *appId = call.arguments[@"iosId"];
         BOOL debug = [call.arguments[@"debug"] boolValue];
         [[KSLogUtil sharedInstance] debug:debug];
-        [KSAdSDKManager setAppId:appId];
-        BOOL personalized =  [call.arguments[@"personalized"] boolValue];
+        KSAdSDKConfiguration *configuration = [KSAdSDKConfiguration configuration];
+        configuration.appId = appId;
         if(debug){
             [KSAdSDKManager setLoglevel:KSAdSDKLogLevelAll];
         }else{
             [KSAdSDKManager setLoglevel:KSAdSDKLogLevelOff];
         }
-        //关闭个性化推荐
-        [KSAdSDKManager setEnablePersonalRecommend:personalized];
-        [KSAdSDKManager setEnableProgrammaticRecommend:personalized];
-        //渠道id
-        result(@YES);
+        // 启动SDK：SDK启动成功后，才可以继续进行后续的广告请求操作（异步）
+        [KSAdSDKManager startWithCompletionHandler:^(BOOL success, NSError *error) {
+            if (success) {
+                result(@YES);
+            }else{
+                result(@NO);
+            }
+        }];
+        BOOL personal =  [call.arguments[@"personal"] boolValue];
+        // 个性化推荐开关：关闭后，看到的广告数量不变，相关度将降低。
+        // 是否允许开启广告的个性化推荐（NO-关闭，YES-开启），由开发者通过SDK的接口来设置。不设置的话则默认为YES。
+        [configuration setEnablePersonalRecommend:personal];
+        BOOL programmatic =  [call.arguments[@"programmatic"] boolValue];
+        // 程序化推荐开关：关闭后，看到的广告数量不变，但将不会为你推荐程序化广告。
+        // 是否允许开启广告的程序化推荐（NO-关闭，YES-开启），由开发者通过SDK的接口来设置。不设置的话则默认为YES。
+        [configuration setEnableProgrammaticRecommend:programmatic];
         //sdk版本
     }else if([@"getSDKVersion" isEqualToString:call.method]){
         NSString *version = [KSAdSDKManager SDKVersion];

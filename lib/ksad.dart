@@ -23,19 +23,23 @@ class KSAd {
   ///
   /// [debug] debug日志
   ///
-  /// [personalized] personalized 是否开启个性化广告
+  /// [personal] personalized 是否开启个性化广告
+  ///
+  /// [programmatic] personalized 是否开启程序化广告
   ///
   static Future<bool> register({
     required String androidId,
     required String iosId,
-    bool? personalized,
+    bool? personal,
+    bool? programmatic,
     bool? debug,
   }) async {
     return await _channel.invokeMethod("register", {
       "androidId": androidId,
       "iosId": iosId,
       "debug": debug ?? false,
-      "personalized": personalized ?? true,
+      "personal": personal ?? true,
+      "programmatic": programmatic ?? true,
     });
   }
 

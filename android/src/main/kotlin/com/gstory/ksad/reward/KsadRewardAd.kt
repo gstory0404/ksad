@@ -109,6 +109,10 @@ object KsadRewardAd {
                 KsadEvent.sendContent(mutableMapOf("adType" to "rewardAd", "onAdMethod" to "onVerify", "hasReward" to true, "rewardAmount" to rewardAmount, "rewardName" to rewardName))
             }
 
+            override fun onRewardVerify(p0: MutableMap<String, Any>?) {
+                Log.d(TAG, "激励视频广告验证$p0")
+            }
+
             override fun onRewardStepVerify(p0: Int, p1: Int) {
                 Log.d(TAG, "激励视频广告分阶段验证 $p0  $p1")
             }
