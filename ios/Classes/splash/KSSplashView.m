@@ -84,8 +84,6 @@
  */
 - (void)ksad_splashAdDidLoad:(KSSplashAdView *)splashAdView{
     [[KSLogUtil sharedInstance] print:(@"开屏广告展示")];
-    
-    [_channel invokeMethod:@"onShow" arguments:nil result:nil];
 }
 /**
  * splash ad material load, ready to display
@@ -108,6 +106,7 @@
  */
 - (void)ksad_splashAdDidVisible:(KSSplashAdView *)splashAdView{
     [[KSLogUtil sharedInstance] print:(@"开屏广告可见")];
+    [_channel invokeMethod:@"onShow" arguments:nil result:nil];
 }
 /**
  * splash ad video begin play
@@ -164,15 +163,16 @@
  * splash ad play finished & auto dismiss (no subsequent callbacks, remove & release KSSplashAdView here)
  */
 - (void)ksad_splashAdDidAutoDismiss:(KSSplashAdView *)splashAdView{
-    
+    [[KSLogUtil sharedInstance] print:(@"开屏广告自动关闭")];
+    [_channel invokeMethod:@"onClose" arguments:nil result:nil];
 }
 
 /**
  * splash ad close by user (zoom out mode) (no subsequent callbacks, remove & release KSSplashAdView here)
  */
 - (void)ksad_splashAdDidClose:(KSSplashAdView *)splashAdView{
-    [[KSLogUtil sharedInstance] print:(@"开屏广告关闭")];
-    [_channel invokeMethod:@"onClose" arguments:nil result:nil];
+//    [[KSLogUtil sharedInstance] print:(@"开屏广告关闭")];
+//    [_channel invokeMethod:@"onClose" arguments:nil result:nil];
 }
 
 @end
