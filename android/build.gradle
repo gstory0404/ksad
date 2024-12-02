@@ -28,7 +28,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-//    namespace = "com.gstory.ksad"
+    namespace = "com.gstory.ksad"
     compileSdkVersion 31
 
     compileOptions {

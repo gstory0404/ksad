@@ -1,3 +1,6 @@
+## 1.0.3
+* android新增namespace
+
 ## 1.0.2
 * 修复ios开屏无法自动跳过
 
