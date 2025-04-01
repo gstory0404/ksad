@@ -18,7 +18,7 @@ A new Flutter plugin project.
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
   s.platform = :ios, '9.0'
-  s.dependency 'KSAdSDK', '3.3.69.3'
+  s.dependency 'KSAdSDK', '3.3.75'
 #   s.frameworks = ["StoreKit","AdSupport","CoreLocation","SystemConfiguration","CoreTelephony","Security","AVFoundation","WebKit","AudioToolbox","CoreGraphics","CoreImage","CoreText","JavaScriptCore","MapKit","UIKit","MobileCoreServices","MediaPlayer","CoreMedia","CoreMotion","Accelerate","ImageIO","QuartzCore","Foundation","CoreData","AVKit","MessageUI","QuickLook","AddressBook","AppTrackingTransparency","CFNetwork","SafariServices","DeviceCheck"]
 #   s.libraries = ["z","xml2","c++abi","resolv.9","c++","sqlite3","bz2","iconv", "resolv.9","bz2.1.0"]
 #   s.vendored_frameworks = 'SDK/KSAdSDK.xcframework'

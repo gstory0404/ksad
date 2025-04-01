@@ -38,7 +38,7 @@
     self.codeId = dic[@"iosId"];
     self.rewardName = dic[@"rewardName"];
     self.rewardAmount = dic[@"rewardAmount"];
-    self.userId =dic[@"userID"];
+    self.userId =dic[@"userId"];
     self.customData = dic[@"customData"];
     KSRewardedVideoModel *model = [KSRewardedVideoModel new];
     //如果开启服务端回调的话，userId和extra会通过回调接⼝回传给接⼊⽅

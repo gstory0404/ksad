@@ -85,8 +85,9 @@ class KsadPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             val codeId = call.argument<String>("androidId")
             val rewardName = call.argument<String>("rewardName")
             val rewardAmount = call.argument<Int>("rewardAmount")
+            val userId = call.argument<String>("userId")
             val extraData = call.argument<String>("customData")
-            KsadRewardAd.loadAd(mActivity!!,codeId,rewardAmount,rewardName,extraData)
+            KsadRewardAd.loadAd(mActivity!!,codeId,rewardAmount,rewardName,userId,extraData)
             result.success(true)
             //展示激励广告
         } else if (call.method == "showRewardAd") {

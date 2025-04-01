@@ -124,7 +124,7 @@ class _HomePageState extends State<HomePage> {
                   //ios广告id
                   iosId: "22960000015",
                   //用户id
-                  userID: "123",
+                  userId: "123",
                   //奖励
                   rewardName: "100金币",
                   //奖励数

@@ -17,21 +17,41 @@ object KsadRewardAd {
     private var mCodeId: String? = null
     private var rewardAmount: Int? = 0
     private var rewardName: String? = null
+    private var userId: String? = null
     private var extraData: String? = null
 
     private var rewardVideoAd: KsRewardVideoAd? = null
 
-    fun loadAd(mActivity: Activity, mCodeId: String?, rewardAmount: Int?, rewardName: String?,extraData : String?) {
+    fun loadAd(
+        mActivity: Activity,
+        mCodeId: String?,
+        rewardAmount: Int?,
+        rewardName: String?,
+        userId: String?,
+        extraData: String?
+    ) {
         this.mActivity = mActivity
         this.mCodeId = mCodeId
         this.rewardAmount = rewardAmount
         this.rewardName = rewardName
+        this.userId = userId
         this.extraData = extraData
-        var scene = KsScene.Builder(this.mCodeId!!.toLong()).rewardCallbackExtraData(jsonToMap(extraData)).build()
+        var scene = KsScene.Builder(this.mCodeId!!.toLong()).rewardCallbackExtraData(
+            mutableMapOf(
+                "thirdUserId" to userId,
+                "extraData" to extraData
+            )
+        ).build()
         KsAdSDK.getLoadManager()?.loadRewardVideoAd(scene, object : RewardVideoAdListener {
             override fun onError(p0: Int, p1: String?) {
                 Log.d(TAG, "激励广告加载失败 $p0 $p1")
-                KsadEvent.sendContent(mutableMapOf("adType" to "rewardAd", "onAdMethod" to "onFail","message" to "$p0 $p1"))
+                KsadEvent.sendContent(
+                    mutableMapOf(
+                        "adType" to "rewardAd",
+                        "onAdMethod" to "onFail",
+                        "message" to "$p0 $p1"
+                    )
+                )
             }
 
             override fun onRewardVideoResult(p0: MutableList<KsRewardVideoAd>?) {
@@ -42,7 +62,12 @@ object KsadRewardAd {
                 Log.d(TAG, "激励视频广告数据请求且资源缓存成功")
                 if (p0 != null && p0.size > 0) {
                     rewardVideoAd = p0[0]
-                    KsadEvent.sendContent(mutableMapOf("adType" to "rewardAd", "onAdMethod" to "onReady"))
+                    KsadEvent.sendContent(
+                        mutableMapOf(
+                            "adType" to "rewardAd",
+                            "onAdMethod" to "onReady"
+                        )
+                    )
                 }
             }
 
@@ -75,20 +100,37 @@ object KsadRewardAd {
             KsadEvent.sendContent(mutableMapOf("adType" to "rewardAd", "onAdMethod" to "onUnReady"))
             return
         }
-        rewardVideoAd?.setRewardAdInteractionListener(object : KsRewardVideoAd.RewardAdInteractionListener {
+        rewardVideoAd?.setRewardAdInteractionListener(object :
+            KsRewardVideoAd.RewardAdInteractionListener {
             override fun onAdClicked() {
                 Log.d(TAG, "激励视频广告点击")
-                KsadEvent.sendContent(mutableMapOf("adType" to "rewardAd", "onAdMethod" to "onClick"))
+                KsadEvent.sendContent(
+                    mutableMapOf(
+                        "adType" to "rewardAd",
+                        "onAdMethod" to "onClick"
+                    )
+                )
             }
 
             override fun onPageDismiss() {
                 Log.d(TAG, "激励视频广告页面消失")
-                KsadEvent.sendContent(mutableMapOf("adType" to "rewardAd", "onAdMethod" to "onClose"))
+                KsadEvent.sendContent(
+                    mutableMapOf(
+                        "adType" to "rewardAd",
+                        "onAdMethod" to "onClose"
+                    )
+                )
             }
 
             override fun onVideoPlayError(p0: Int, p1: Int) {
                 Log.d(TAG, "激励视频广告播放拨错 $p0  $p1")
-                KsadEvent.sendContent(mutableMapOf("adType" to "rewardAd", "onAdMethod" to "onFail","message" to "$p0 $p1"))
+                KsadEvent.sendContent(
+                    mutableMapOf(
+                        "adType" to "rewardAd",
+                        "onAdMethod" to "onFail",
+                        "message" to "$p0 $p1"
+                    )
+                )
             }
 
             override fun onVideoPlayEnd() {
@@ -101,12 +143,25 @@ object KsadRewardAd {
 
             override fun onVideoPlayStart() {
                 Log.d(TAG, "激励视频广告开始播放视频")
-                KsadEvent.sendContent(mutableMapOf("adType" to "rewardAd", "onAdMethod" to "onShow"))
+                KsadEvent.sendContent(
+                    mutableMapOf(
+                        "adType" to "rewardAd",
+                        "onAdMethod" to "onShow"
+                    )
+                )
             }
 
             override fun onRewardVerify() {
                 Log.d(TAG, "激励视频广告验证")
-                KsadEvent.sendContent(mutableMapOf("adType" to "rewardAd", "onAdMethod" to "onVerify", "hasReward" to true, "rewardAmount" to rewardAmount, "rewardName" to rewardName))
+                KsadEvent.sendContent(
+                    mutableMapOf(
+                        "adType" to "rewardAd",
+                        "onAdMethod" to "onVerify",
+                        "hasReward" to true,
+                        "rewardAmount" to rewardAmount,
+                        "rewardName" to rewardName
+                    )
+                )
             }
 
             override fun onRewardVerify(p0: MutableMap<String, Any>?) {

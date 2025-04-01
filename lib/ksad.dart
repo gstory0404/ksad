@@ -70,7 +70,7 @@ class KSAd {
     required String iosId,
     required String rewardName,
     required int rewardAmount,
-    required String userID,
+    required String userId,
     String? customData,
   }) async {
     return await _channel.invokeMethod("loadRewardAd", {
@@ -78,7 +78,7 @@ class KSAd {
       "iosId": iosId,
       "rewardName": rewardName,
       "rewardAmount": rewardAmount,
-      "userID": userID,
+      "userId": userId,
       "customData": customData ?? "",
     });
   }
