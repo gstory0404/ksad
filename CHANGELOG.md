@@ -1,3 +1,8 @@
+## 1.0.4
+* android sdk升级3.3.75
+* ios sdk升级3.3.75
+* 优化激励广告透传字段
+
 ## 1.0.3
 * android新增namespace
 

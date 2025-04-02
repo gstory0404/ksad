@@ -59,6 +59,6 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation "androidx.recyclerview:recyclerview:1.1.0"
-    implementation(name: 'kssdk-ad-3.3.69-publishRelease-e3e7a25d7b', ext: 'aar')
+    implementation(name: 'kssdk-ad-3.3.75-publishRelease-6d3e7253f2', ext: 'aar')
  //   implementation files('libs/kssdk-ad-3.3.32.aar')
 }
