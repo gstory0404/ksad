@@ -1,3 +1,8 @@
+## 1.0.5
+* android sdk升级4.4.20.1
+* iOS sdk升级4.4.20.1
+* iOS激励广告监听优化
+
 ## 1.0.4
 * android sdk升级3.3.75
 * ios sdk升级3.3.75

@@ -1,5 +1,6 @@
 package com.gstory.ksad.reward
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.util.Log
 import com.gstory.ksad.KsadEvent
@@ -8,6 +9,7 @@ import com.kwad.sdk.api.KsLoadManager.RewardVideoAdListener
 import org.json.JSONException
 import org.json.JSONObject
 
+@SuppressLint("StaticFieldLeak")
 object KsadRewardAd {
     private var TAG = this.javaClass.javaClass.name
 
@@ -37,7 +39,7 @@ object KsadRewardAd {
         this.userId = userId
         this.extraData = extraData
         var scene = KsScene.Builder(this.mCodeId!!.toLong()).rewardCallbackExtraData(
-            mutableMapOf(
+            mapOf(
                 "thirdUserId" to userId,
                 "extraData" to extraData
             )
